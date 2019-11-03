@@ -5,9 +5,11 @@
     * [Converting to GeoJSON](#converting-to-geojson)
     * [Applying a Projection](#applying-a-projection)
     * [Generating an SVG Preview](#generating-an-svg-preview)
-* [GIS and Cartography Terminology](#gis-and-cartography-terminology)
-    * [Scales](#scales)
-* [Links](#links)
+    * [Use ndjson-split To Create a Stream from GeoJSON Array Property](#use-ndjson-split-to-create-a-stream-from-geojson-array)
+    * [Use ndjson-map to Set Properties](#use-ndjson-map-to-set-properties)
+* [Tools](#tools)
+* [Resources](#resources)
+* [References](#references)
 
 > All command line examples are executed from the root of this repo.
 
@@ -21,7 +23,9 @@ The shapefiles contained in the `source` directory were obtained from the open s
 
 ```
 npm install -g shapefile
+npm install -g d3
 npm install -g d3-geo-projection
+npm install -g ndjson-cli
 ```  
 
 Make sure that the map data is unzipped in a safe location, and create a directory that you will store the converted map data. In this directory structure is as follows:
@@ -77,27 +81,77 @@ Example:
 geo2svg -w 960 -h 960 < data\countries-armadillo.json > images\countries-armadillo.svg
 ```
 
-## GIS and Cartography Terminology
+### Use ndjson-split To Create a Stream from GeoJSON Array Property
 [Back to Top](#mapping-research)
 
-* **FIPS Code** - Federal Information Processing Standard state codes. Numeric and two-letter alphabetic codes that identify U.S. states and certain other associated areas.
+From the command line:
 
-### Scales
+```
+ndjson-split "d.<array>" < <input>.json > <output>.ndjson
+```
+
+Example:
+
+> Create a new file of objects rooted in each array of features in the source file
+
+```
+ndjson-split "d.features" < data\countries-albers.json > data\countries-albers.ndjson
+```
+
+### Use ndjson-map to Set Properties
 [Back to Top](#mapping-research)
 
-* **1:110m** - Small scale. 1 cm = 1,100 km. Suitable for schematic maps of the world on a postcard or as a small locator globe.
+From the command line:
 
-* **1:50m** - Medium scale. 1 cm = 500 km. Suitable for making zoomed-out maps of countries and regions. Show the world on a tabloid size page.
+```
+ndjson-map "d.<prop> = d.<object>.<property>, d" < <input>.ndjson > <output>.ndjson
+```
 
-* **1:10m** - Large scale. 1 cm = 100 km. The most detailed. Suitable for marking zoomed-in maps of countries and regions. Show the world on a large wall poster.
+Example:
 
-## Links
+> Add a root `id` property to each object lifted from `object.properties.NE_ID`
+
+```
+ndjson-map "d.id = d.properties.NE_ID, d" < countries-albers.ndjson > countries-albers-id.ndjson
+```
+
+## Tools
 [Back to Top](#mapping-research)
+
+* [shapefile](https://github.com/mbostock/shapefile)
+* [d3-geo-projection](https://github.com/d3/d3-geo-projection)
+* [ndjson-cli](https://github.com/mbostock/ndjson-cli)
+
+## Resources
+[Back to Top](#mapping-research)
+
+* [NaturalEarth](https://www.naturalearthdata.com/downloads/)
+* [Census Bureau - Geography Program](https://www.census.gov/programs-surveys/geography.html)
+* [TopoJSON - World Atlas](https://github.com/topojson/world-atlas)
+* [TopoJSON - US Atlas](https://github.com/topojson/us-atlas)
+* [D3 State Plane](https://github.com/veltman/d3-stateplane)
+* [Spatial Reference](https://spatialreference.org/)
+
+## References
+[Back to Top](#mapping-research)
+
+**Definitions**  
 
 * [Geographic Information Systems](https://en.wikipedia.org/wiki/Geographic_information_system)
 * [FIPS Codes](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code)
+* [NaturalEarth Wiki](https://en.wikipedia.org/wiki/Natural_Earth)
+* [Choropleth Map](https://en.wikipedia.org/wiki/Choropleth_map)
+
+**Documentation**  
+
 * [GeoJSON](https://geojson.org/)
 * [GeoJSON IETF RFC7946](https://tools.ietf.org/html/rfc7946)
-* [NaturalEarth](https://www.naturalearthdata.com/downloads/)
-* [NaturalEarth Wiki](https://en.wikipedia.org/wiki/Natural_Earth)
+    * [Feature Properties](https://tools.ietf.org/html/rfc7946#section-3.2)
+* [ndjson - Newline Delimited JSON](http://ndjson.org)
 * [d3-geo-projection docs](https://github.com/d3/d3-geo-projection/blob/master/README.md)
+* [Census Bureau Guidance for Data Users](https://www.census.gov/programs-surveys/acs/guidance.html)
+
+**Articles**  
+
+* [Command Line Cartography](https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c)
+* [Why Use Make?](https://bost.ocks.org/mike/make/)
