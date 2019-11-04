@@ -25,7 +25,9 @@ The shapefiles contained in the `source` directory were obtained from the open s
 npm install -g shapefile
 npm install -g d3
 npm install -g d3-geo-projection
+npm install -g d3-scale-chromatic
 npm install -g ndjson-cli
+npm install -g topojson
 ```  
 
 Make sure that the map data is unzipped in a safe location, and create a directory that you will store the converted map data. In this directory structure is as follows:
@@ -120,7 +122,9 @@ ndjson-map "d.id = d.properties.NE_ID, d" < countries-albers.ndjson > countries-
 
 * [shapefile](https://github.com/mbostock/shapefile)
 * [d3-geo-projection](https://github.com/d3/d3-geo-projection)
+* [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic)
 * [ndjson-cli](https://github.com/mbostock/ndjson-cli)
+* [topojson](https://github.com/topojson/topojson)
 
 ## Resources
 [Back to Top](#mapping-research)
@@ -131,6 +135,7 @@ ndjson-map "d.id = d.properties.NE_ID, d" < countries-albers.ndjson > countries-
 * [TopoJSON - US Atlas](https://github.com/topojson/us-atlas)
 * [D3 State Plane](https://github.com/veltman/d3-stateplane)
 * [Spatial Reference](https://spatialreference.org/)
+* [ColorBrewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 
 ## References
 [Back to Top](#mapping-research)
@@ -141,17 +146,33 @@ ndjson-map "d.id = d.properties.NE_ID, d" < countries-albers.ndjson > countries-
 * [FIPS Codes](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code)
 * [NaturalEarth Wiki](https://en.wikipedia.org/wiki/Natural_Earth)
 * [Choropleth Map](https://en.wikipedia.org/wiki/Choropleth_map)
+* [Steradian](https://en.wikipedia.org/wiki/Steradian)
 
 **Documentation**  
 
 * [GeoJSON](https://geojson.org/)
 * [GeoJSON IETF RFC7946](https://tools.ietf.org/html/rfc7946)
     * [Feature Properties](https://tools.ietf.org/html/rfc7946#section-3.2)
+* [TopoJSON](https://github.com/topojson/topojson/blob/master/README.md#api-reference)
 * [ndjson - Newline Delimited JSON](http://ndjson.org)
 * [d3-geo-projection docs](https://github.com/d3/d3-geo-projection/blob/master/README.md)
+* [d3-interpolate](https://github.com/d3/d3-interpolate/blob/master/README.md)
+* [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic/blob/master/README.md)
+* [d3-scale](https://github.com/d3/d3-scale/blob/master/README.md)
+    * [Sequential Scales](https://github.com/d3/d3-scale/blob/master/README.md#sequential-scales)
+    * [Power Scales](https://github.com/d3/d3-scale/blob/master/README.md#power-scales)
+    * [Quantile Scales](https://github.com/d3/d3-scale/blob/master/README.md#quantile-scales)
 * [Census Bureau Guidance for Data Users](https://www.census.gov/programs-surveys/acs/guidance.html)
 
 **Articles**  
 
-* [Command Line Cartography](https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c)
+* [Command Line Cartography - Part 1](https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c)
+* [Command Line Cartography - Part 2](https://medium.com/@mbostock/command-line-cartography-part-2-c3a82c5c0f3)
+* [Command Line Cartography - Part 3](https://medium.com/@mbostock/command-line-cartography-part-3-1158e4c55a1e)
+* [Command Line Cartography - Part 4](https://medium.com/@mbostock/command-line-cartography-part-4-82d0d26df0cf)
 * [Why Use Make?](https://bost.ocks.org/mike/make/)
+* [Line Simplification](https://bost.ocks.org/mike/simplify/)
+* [How to Infer Topology](https://bost.ocks.org/mike/topology/)
+* [Literate Jenks Natural Breaks and How The Idea of Code is Lost](https://macwright.org/2013/02/18/literate-jenks.html)
+* [Threshold Key](https://bl.ocks.org/mbostock/4573883)
+* [geo2svg - California](https://bl.ocks.org/mbostock/fb6c1e5ff700f9713a9dc2f0fd392c35)
