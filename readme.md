@@ -144,6 +144,7 @@ ndjson-map "d.id = d.properties.NE_ID, d" < countries-albers.ndjson > countries-
 
 * [Geographic Information Systems](https://en.wikipedia.org/wiki/Geographic_information_system)
 * [FIPS Codes](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code)
+* [State and County FIPS Codes](https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt)
 * [NaturalEarth Wiki](https://en.wikipedia.org/wiki/Natural_Earth)
 * [Choropleth Map](https://en.wikipedia.org/wiki/Choropleth_map)
 * [Steradian](https://en.wikipedia.org/wiki/Steradian)
