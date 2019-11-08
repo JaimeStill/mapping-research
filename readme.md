@@ -177,3 +177,4 @@ ndjson-map "d.id = d.properties.NE_ID, d" < countries-albers.ndjson > countries-
 * [Literate Jenks Natural Breaks and How The Idea of Code is Lost](https://macwright.org/2013/02/18/literate-jenks.html)
 * [Threshold Key](https://bl.ocks.org/mbostock/4573883)
 * [geo2svg - California](https://bl.ocks.org/mbostock/fb6c1e5ff700f9713a9dc2f0fd392c35)
+* [Converting EPSG to D3 Projections](https://stackoverflow.com/questions/42259132/converting-epsg-projection-bounds-to-a-d3-js-map/42267008#42267008)
